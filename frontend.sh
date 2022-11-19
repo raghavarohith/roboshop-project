@@ -16,6 +16,9 @@ if [ $? -eq 0 ]; then
 cd /usr/share/nginx/html
 rm -rf *
 unzip -o /tmp/frontend.zip
+if [ $? -eq 0 ]
+then
+echo -e "\e[34m SUCCESS ARCHIVED\e[0m"
 mv frontend-main/static/* .
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf
 systemctl enable nginx
