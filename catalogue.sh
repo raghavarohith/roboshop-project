@@ -23,6 +23,7 @@ then
 mv catalogue-main catalogue
 fi
 cd /home/roboshop/catalogue
+
 npm install
 
 if [ $? -ne 0 ]
