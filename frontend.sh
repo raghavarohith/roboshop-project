@@ -1,5 +1,5 @@
 yum install nginx -y
-echo "install nginx SUCCESS"
+echo -e "\e[32m nginx SUCCESS in color\e[0m"
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
 cd /usr/share/nginx/html
