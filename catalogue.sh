@@ -29,7 +29,7 @@ if [ $? -ne 0 ]
 then
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 fi
-sed -e -i 's/MONGODNSNAME/mongodb.devopsb69.online/' /etc/systemd/system/catalogue.service
+sed -i -e 's/MONGO_DNSNAME/mongodb.devopsb69.online/' /etc/systemd/system/catalogue.service
 
 systemctl daemon-reload
 
