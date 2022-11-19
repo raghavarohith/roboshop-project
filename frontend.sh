@@ -7,6 +7,12 @@ echo Failure
 fi
 
 curl -s -L -o /tmp/frontend.zip "https://github.com/roboshop-devops-project/frontend/archive/main.zip"
+if [ $? -eq 0 ]; then
+  echo SUCCESS
+  else
+    echo Failurefi
+    fi
+
 cd /usr/share/nginx/html
 rm -rf *
 unzip -o /tmp/frontend.zip
