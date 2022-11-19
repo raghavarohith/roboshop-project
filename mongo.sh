@@ -5,6 +5,7 @@ echo -e "\e[34m SUCCESS INSTALLED\e[0m"
 else
 echo FAILURE
 fi
+sed -e "\c 127.0.0.0\0.0.0.0" /etc/mongd.conf
 
 systemctl enable mongod
 systemctl start mongod
