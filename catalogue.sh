@@ -8,12 +8,9 @@ then
 echo SUCCESS
 fi
 useradd roboshop
-if [ $? -eq 0 ]; then
-echo SUCCESS
-fi
+if [ $? -ne 0 ]
+then
 curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
-if [ $? -eq 0 ]; then
-echo SUCCESS
 fi
 cd /home/roboshop
 if [ $? -eq 0 ]; then
@@ -24,7 +21,7 @@ mv catalogue-main catalogue
 cd /home/roboshop/catalogue
 npm install
 
-sed -e -i 's/MONGO_DNSNAME/mongodb.devopslearning69.online' /home/roboshop/catalogue/systemd.service
+sed -e -i 's/MONGO_DNSNAME/mongodb.devopslearning69.online/' /home/roboshop/catalogue/systemd.service
 
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
 systemctl daemon-reload
