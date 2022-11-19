@@ -7,11 +7,12 @@ if [ $? -eq 0 ]
 then
 echo SUCCESS
 fi
-useradd roboshop
-if [ $? -ne 0 ]
+if  [ $? -ne 0 ]
 then
-curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
+useradd roboshop
 fi
+
+curl -s -L -o /tmp/catalogue.zip "https://github.com/roboshop-devops-project/catalogue/archive/main.zip"
 cd /home/roboshop
 if [ $? -eq 0 ]; then
 echo SUCCESS
