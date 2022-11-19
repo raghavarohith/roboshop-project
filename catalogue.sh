@@ -18,7 +18,10 @@ if [ $? -eq 0 ]; then
 echo SUCCESS
 fi
 unzip -o /tmp/catalogue.zip
+if [ $? -ne 0 ]
+then
 mv catalogue-main catalogue
+fi
 cd /home/roboshop/catalogue
 npm install
 
