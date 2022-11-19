@@ -25,9 +25,12 @@ fi
 cd /home/roboshop/catalogue
 npm install
 
-sed -e -i 's/MONGO_DNSNAME/mongodb.devopslearning69.online/' /home/roboshop/catalogue/systemd.service
-
+if [ $? -ne 0 ]
+then
 mv /home/roboshop/catalogue/systemd.service /etc/systemd/system/catalogue.service
+fi
+sed -e -i 's/MONGO_DNSNAME/mongodb.devopsb69.online/' /etc/systemd/system/catalogue.service
+
 systemctl daemon-reload
 
 systemctl enable catalogue
