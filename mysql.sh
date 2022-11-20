@@ -1,3 +1,3 @@
 
 fruits=(apple banana orange)
-echo "${#fruits[@]}"
+echo "${#fruits}"
