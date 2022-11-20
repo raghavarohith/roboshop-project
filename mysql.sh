@@ -1,2 +1,3 @@
 
-echo C-$c
+fruits=apple banana orange
+echo "$fruits"
