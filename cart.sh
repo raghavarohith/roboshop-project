@@ -1,6 +1,6 @@
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 yum install nodejs -y
-if [ $?-eq 0 ]
+if [ $? -eq 0 ]
 then
 echo SUCCESS
 fi
