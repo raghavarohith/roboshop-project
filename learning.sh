@@ -7,8 +7,8 @@
 #echo password-$local
 # echo username = $1
  #echo password = $2
-a=10
-echo $a
+
+echo C - $c
 
 
 
