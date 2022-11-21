@@ -8,11 +8,15 @@
 # echo username = $1
  #echo password = $2
 
-func() {
+SAMPLE() {
   echo "hello world"
-
+  a=200
+  echo a- $a
+  b=100
+  echo FIrst = $1
 }
-func
+SAMPLE
+echo b - $b
 
 
 
