@@ -10,9 +10,9 @@
 
 func() {
   echo "hello world"
-func
-}
 
+}
+func
 
 
 
