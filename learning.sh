@@ -5,9 +5,10 @@
 
 #read -s -p "enter your password" local
 #echo password-$local
- username = $1
- password = $2
-
+# echo username = $1
+ #echo password = $2
+a=10
+echo $a
 
 
 
