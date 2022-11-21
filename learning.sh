@@ -5,8 +5,8 @@
 
 #read -s -p "enter your password" local
 #echo password-$local
-echo username = $1
-echo password = $2
+ username = $1
+ password = $2
 
 
 
