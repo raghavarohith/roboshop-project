@@ -3,8 +3,11 @@
 #echo name=$pass
 #echo age=$pass2
 
-read -s -p "enter your password" local
-echo password-$local
+#read -s -p "enter your password" local
+#echo password-$local
+echo username = $1
+echo password = $2
+
 
 
 
