@@ -8,7 +8,10 @@
 # echo username = $1
  #echo password = $2
 
-echo local=$d
+func() {
+  echo "hello world"
+  func
+}
 
 
 
