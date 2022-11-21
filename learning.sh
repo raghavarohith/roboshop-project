@@ -15,7 +15,7 @@ SAMPLE() {
   b=100
   echo FIrst = $1
 }
-SAMPLE
+SAMPLE xyz
 echo b - $b
 
 
