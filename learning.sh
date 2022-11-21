@@ -8,7 +8,8 @@
 # echo username = $1
  #echo password = $2
 
-echo C - $c
+echo defaul_password=$1
+
 
 
 
