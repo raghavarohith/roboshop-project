@@ -8,7 +8,7 @@
 # echo username = $1
  #echo password = $2
 
-echo defaul_password=$1
+echo local=$1
 
 
 
