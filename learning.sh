@@ -8,7 +8,7 @@
 # echo username = $1
  #echo password = $2
 
-echo local=$1
+echo local=$c
 
 
 
