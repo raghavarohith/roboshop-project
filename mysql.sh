@@ -1,4 +1,4 @@
-if [ -z "$1" ]; then
+if [ -n "$1" ]; then
   echo INPUT PASSWORD IS NEEDED
   exit
   fi
