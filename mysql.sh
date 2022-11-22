@@ -1,3 +1,4 @@
+ROBOSHOP_MYSQL_PASSWORD=$1
 echo -e "\e[34mDOWNLOADING MYSQL REPO FILE\e[0m"
 curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo
 if [ $? -eq 0 ]
