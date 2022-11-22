@@ -1,10 +1,13 @@
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+PRINT "INSTALL NODEJS"
 yum install nodejs -y
 if [ $? -eq 0 ]
 then
 echo SUCCESS
 fi
+if [ $? -ne 0 ]; then
 useradd roboshop
+fi
 curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip"
 cd /home/roboshop
 rm -rf cart
