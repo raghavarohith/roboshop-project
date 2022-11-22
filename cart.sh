@@ -15,6 +15,7 @@ unzip -o /tmp/cart.zip
 mv cart-main cart
 cd cart
 npm install
+exit
 if [ $? -eq 0 ]; then
 echo -e "\e[33m SUCCESS NPM INSTALLED\e[0m"
 fi
