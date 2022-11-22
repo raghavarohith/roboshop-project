@@ -1,10 +1,7 @@
+source common.sh
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 PRINT "INSTALL NODEJS"
-yum install nodejs -y
-if [ $? -eq 0 ]
-then
-echo SUCCESS
-fi
+STAT
 if [ $? -ne 0 ]; then
 useradd roboshop
 fi
@@ -15,7 +12,6 @@ unzip -o /tmp/cart.zip
 mv cart-main cart
 cd cart
 npm install
-exit
 if [ $? -eq 0 ]; then
 echo -e "\e[33m SUCCESS NPM INSTALLED\e[0m"
 fi
