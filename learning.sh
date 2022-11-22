@@ -5,18 +5,10 @@
 
 #read -s -p "enter your password" local
 #echo password-$local
-# echo username = $1
- #echo password = $2
+echo username = $1
+echo password = $2
 
-SAMPLE() {
-  echo "hello world"
-  a=200
-  echo a- $a
-  b=100
-  echo FIrst = $1
-}
-SAMPLE xyz
-echo b - $b
+
 
 
 
