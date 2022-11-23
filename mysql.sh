@@ -7,9 +7,9 @@ ROBOSHOP_MYSQL_PASSWORD=$1 &>>/tmp/log
 STAT () {
   if [ $1 -eq 0 ]
   then
-    echo SUCCESS
+    echo "SUCCESS"
   else
-   echo FAILURE
+   echo "FAILURE""
    fi
 }
 PRINT (){
@@ -37,5 +37,5 @@ echo show databases | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} &>>/tmp/log
 if [ $? -ne 0 ]; then
 echo "ALTER USER 'root'@'localhost' IDENTIFIED by '${ROBOSHOP_MYSQL_PASSWORD}';" >/tmp/root-pass-sql
 DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}')
-cat /tmp/root-pass-sql | mysql --connect-expired-password  -uroot -p"${DEFAULT_PASSWORD}"
+cat /tmp/root-pass-sql | mysql --connect-expired-password -uroot -p"${DEFAULT_PASSWORD}"
 fi

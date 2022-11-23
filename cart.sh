@@ -1,16 +1,34 @@
 source common.sh
+PRINT "INSTALL NODEJS REPOS"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash >/tmp/log.txt
-STAT
-if [ $? -ne 0 ]; then
+STAT $?
+PRINT "install nodejs"
+yum install nodejs -y
+STAT $?
+
+PRINT "Adding application user"
 useradd roboshop
-fi
+STAT $?
+PRINT "download app content"
 curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip" >/tmp/log.txt
+STAT $?
+
+PRINT "remove previous "
 cd /home/roboshop
+
 rm -rf cart
+STAT $?
+
+PRINT "extracting app content"
 unzip -o /tmp/cart.zip >/tmp/log.txt
+STAT $?
+
 mv cart-main cart
 cd cart
+
+PRINT "install dependencies"
 npm install >/tmp/log.txt
+STAT $?
 if [ $? -eq 0 ]; then
 echo -e "\e[33m SUCCESS NPM INSTALLED\e[0m"
 fi
