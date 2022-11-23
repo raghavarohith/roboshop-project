@@ -32,7 +32,7 @@ STAT $?
 systemctl start mysqld &>>/tmp/log
 STAT $?
 
-echo show databases | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD}
+echo show databases | mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} &>>/tmp/log
 
 if [ $? -ne 0 ]; then
 echo "ALTER USER 'root'@'localhost' IDENTIFIED by '${ROBOSHOP_MYSQL_PASSWORD}@1';" >/tmp/root-pass-sql
