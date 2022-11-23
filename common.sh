@@ -1,4 +1,4 @@
-STAT () {
+STAT() {
 if [ $? -eq 0 ]
 then
 echo -e "\e[1;32mSUCCESS\e[0m"
@@ -8,7 +8,7 @@ else
   exit
 fi
 }
-PRINT (){
+PRINT() {
   echo "-------------$1--------" >>${LOG}
   echo -e "\e[33m$1\e[0m"
   }
@@ -16,9 +16,26 @@ PRINT (){
 LOG=/tmp/$COMPONENT.log
 rm -f $LOG
 
+DOWNLOAD_APP_CODE() {
+PRINT "download app content"
+ curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
+  STAT $?
 
-NODEJS () {
+    PRINT "remove previous "
+    cd $APP_LOC &>>$LOG
+    rm -rf ${CONTENT} &>>$LOG
+    STAT $?
 
+    PRINT "extracting app content"
+    unzip -o /tmp/${COMPONENT}.zip &>>$LOG
+    STAT $?
+
+}
+
+
+NODEJS() {
+APP_LOC=/home/roboshop
+CONTENT=$COMPONENT
   PRINT "INSTALL NODEJS REPOS"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG
   STAT $?
@@ -35,20 +52,20 @@ NODEJS () {
   STAT $?
 
   PRINT "download app content"
-  curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip" &>>$LOG
+  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
   STAT $?
 
   PRINT "remove previous "
   cd /home/roboshop &>>$LOG
-  rm -rf cart &>>$LOG
+  rm -rf ${COMPONENT} &>>$LOG
   STAT $?
 
   PRINT "extracting app content"
-  unzip -o /tmp/cart.zip &>>$LOG
+  unzip -o /tmp/${COMPONENT}.zip &>>$LOG
   STAT $?
 
-  mv cart-main cart
-  cd cart
+  mv ${COMPONENT}-main ${COMPONENT}
+  cd ${COMPONENT}
 
   PRINT "install dependencies"
   npm install &>>$LOG
@@ -57,17 +74,17 @@ NODEJS () {
   PRINT "configuration endpoints"
   sed -i -e 's/REDIS_ENDPOINT/redis.devopsb69.online/' -e 's/CATALOGUE_ENDPOINT/catalogue.devopsb69.online/' systemd.service &>>$LOG
   STAT $?
-  mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service
+  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
   PRINT "system reload"
   systemctl daemon-reload &>>$LOG
   STAT $?
 
   PRINT "enable"
-  systemctl enable cart &>>$LOG
+  systemctl enable ${COMPONENT} &>>$LOG
   STAT $?
 
   PRINT "restart"
-  systemctl restart cart &>>$LOG
+  systemctl restart ${COMPONENT} &>>$LOG
   STAT $?
 
 }
