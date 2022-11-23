@@ -1,3 +1,6 @@
+COMPONENT=cart
+source common.sh
+
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 if [ $? -eq 0 ]; then
   echo SUCCESS

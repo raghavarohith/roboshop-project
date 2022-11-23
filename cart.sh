@@ -9,7 +9,10 @@ yum install nodejs -y &>>$LOG
 STAT $?
 
 PRINT "Adding application user"
+id roboshop &>>$LOG
+if [ $? -ne 0 ]; then
 useradd roboshop &>>$LOG
+fi
 STAT $?
 
 PRINT "download app content"
