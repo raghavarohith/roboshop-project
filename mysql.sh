@@ -15,7 +15,7 @@ STAT () {
 PRINT (){
   echo -e "\e[34m$1\e[0m"
 }
-
+PRINT "DOWNLOADING MYSQL REPO FILE"
 curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>/tmp/log
 STAT $?
  PRINT "DISABLE MYSQL SERVICE"
