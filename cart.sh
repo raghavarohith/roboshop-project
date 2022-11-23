@@ -4,6 +4,9 @@ curl -sL https://rpm.nodesource.com/setup_lts.x | bash >/tmp/log.txt
 STAT $?
 
 PRINT "install nodejs"
+if [ $? -ne 0 ]; then
+  echo ALREADY EXITS
+  fi
 yum install nodejs -y
 STAT $?
 
