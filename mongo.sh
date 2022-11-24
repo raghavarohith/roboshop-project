@@ -17,7 +17,7 @@ systemctl restart mongod &>>{LOG}
 STAT $?
 
 PRINT "update listen ip"
-se -i -e 's/127.0.0.1/0.0.0.0' /etc/mongod.conf &>>{LOG}
+sed -i -e 's/127.0.0.1/0.0.0.0' /etc/mongod.conf &>>{LOG}
 STAT $?
 
 APP_LOC=/tmp
