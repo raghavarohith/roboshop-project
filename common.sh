@@ -17,6 +17,14 @@ LOG=/tmp/$COMPONENT.log
 rm -f $LOG
 
 DOWNLOAD_APP_CODE() {
+  if [ ! z "$APP_USER" ]; then
+      PRINT "Adding application user"
+      id roboshop &>>$LOG
+      if [ $? -ne 0 ]; then
+      useradd roboshop &>>$LOG
+      fi
+      STAT $?
+      fi
 PRINT "download app content"
  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>>$LOG
   STAT $?
@@ -31,11 +39,27 @@ PRINT "download app content"
     STAT $?
 
 }
+SYSTEMD_SETUP() {
+  sed -i -e 's/REDIS_ENDPOINT/redis.devopsb69.online/' -e 's/CATALOGUE_ENDPOINT/catalogue.devopsb69.online/' systemd.service &>>$LOG
+    STAT $?
+    mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 
+  PRINT "reload daemon"
+  systemctl daemon-reload
+  STAT $?
+
+  PRINT "start"
+  systemctl start ${COMPONENT}
+  STAT $?
+  PRINT "eanble"
+  systemctl enable ${COMPONENT}
+  STAT $?
+}
 
 NODEJS() {
 APP_LOC=/home/roboshop
 CONTENT=$COMPONENT
+APP_USER=roboshop
   PRINT "INSTALL NODEJS REPOS"
   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOG
   STAT $?
@@ -76,4 +100,20 @@ CONTENT=$COMPONENT
   systemctl restart ${COMPONENT} &>>$LOG
   STAT $?
 
+}
+
+JAVA() {
+APP_LOC=/home/roboshop
+CONTENT=$COMPONENT
+APP_USER=roboshop
+PRINT "install maven"
+yum install maven -y &>>$LOG
+STAT $?
+
+DOWNLOAD_APP_CODE
+
+PRINT "maven dependencies"
+  mvn clean package &>>$LOG && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>>$LOG
+  STAT $?
+SYSTEMD_SETUP
 }
