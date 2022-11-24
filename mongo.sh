@@ -13,7 +13,7 @@ STAT $?
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 
 DOWNLOAD_APP_CODE
-APP_LOC=/tmp
+
 
 cd mongodb-main
 PRINT "mongo catalogue"
