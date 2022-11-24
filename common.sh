@@ -112,7 +112,8 @@ STAT $?
 
 DOWNLOAD_APP_CODE
 PRINT "maven dependencies"
-  mvn clean package &>>$LOG && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>>$LOG
-  STAT $?
+mvn clean package &>>$LOG && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>>$LOG
+STAT $?
+
 SYSTEMD_SETUP
 }
