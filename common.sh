@@ -122,22 +122,21 @@ SYSTEMD_SETUP
 
 PYTHON() {
 
+APP_LOC=/home/roboshop
+CONTENT=$COMPONENT
+APP_USER=roboshop
+
 PRINT "python installation"
 yum install python36 gcc python3-devel -y &>>{LOG}
 STAT $?
 
 DOWNLOAD_APP_CODE
 
-PRINT "moving payment"
- mv payment-main payment &>>{LOG}
-STAT $?
-
-PRINT" home payment"
-cd /home/roboshop/payment &>>{LOG}
-STAT $?
+mv ${COMPONENT}-main ${COMPONENT}
+cd ${COMPONENT}
 
 PRINT "pip installation"
- pip3 install -r requirements.txt &>>{LOG}
+pip3 install -r requirements.txt &>>{LOG}
 STAT $?
 
 SYSTEMD_SETUP
