@@ -1,18 +1,31 @@
-curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
-yum install -y mongodb-org
-if [ $? -eq 0 ]; then
-echo -e "\e[34m SUCCESS INSTALLED\e[0m"
-else
-echo FAILURE
-fi
+
+COMPONENT=mongodb
+source common.sh
+
+PRINT "MONGO REPO FILE"
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>${LOG}
+STAT $?
+
+PRINT "install mongo db"
+yum install -y mongodb- &>>${LOG}
+STAT $?
+
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.
-curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
 
-cd /tmp
-unzip -o mongodb.zip
-cd mongodb-main
-mongo < catalogue.js
-mongo < users.js
+DOWNLOAD_APP_CODE
+exit
+PRINT "mongo catalogue"
+mongo < catalogue.js &>>${LOG}
+STAT $?
 
-systemctl enable mongod
-systemctl restart mongod
+PRINT "mongo user"
+mongo < users.js &>>${LOG}
+STAT $?
+
+PRINT "enable mongodb"
+systemctl enable mongod &>>${LOG}
+STAT $?
+
+PRINT "restart mongodb"
+systemctl restart mongod &>>${LOG}
+STAT $?
