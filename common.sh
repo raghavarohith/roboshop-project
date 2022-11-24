@@ -138,6 +138,7 @@ cd ${COMPONENT}
 PRINT "pip installation"
 pip3 install -r requirements.txt &>>{LOG}
 STAT $?
+exit
 
 SYSTEMD_SETUP
 }
