@@ -135,7 +135,11 @@ PRINT "movement"
 
 mv ${COMPONENT}-main ${COMPONENT}
 STAT $?
+
+PRINT "go to payment"
 cd ${COMPONENT}
+STAT $?
+
 
 PRINT "pip installation"
 pip3 install -r requirements.txt &>>{LOG}
@@ -144,7 +148,7 @@ STAT $?
 
 USER_ID=$(id -u roboshop)
 GROUP_ID=$(id -g roboshop)
-sed -i -e "/uid/ c uid = ${USER_ID}" -e "/gid/ c gid = ${GROUP_ID}" /${COMPONENT}/${COMPONENT}.ini
+sed -i -e "/uid/ c uid = ${USER_ID}" -e "/gid/ c gid = ${GROUP_ID}" /${COMPONENT}.ini
 
 SYSTEMD_SETUP
 }
