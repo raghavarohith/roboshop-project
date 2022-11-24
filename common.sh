@@ -153,3 +153,20 @@ sed -i -e "/uid/ c uid = ${USER_ID}" -e "/uid/ c uid = ${GROUP_ID}" /${COMPONENT
 
 SYSTEMD_SETUP
 }
+
+GO_LANG() {
+
+  PRINT "install golang"
+  yum install golang -y
+  STAT $?
+
+  DOWNLOAD_APP_CODE
+
+  mv ${COMPONENT}-main ${COMPONENT}
+  cd ${COMPONENT}
+  go mod init dispatch
+  go get
+  go build
+
+SYSTEMD_SETUP
+}
