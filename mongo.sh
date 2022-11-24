@@ -16,6 +16,7 @@ DOWNLOAD_APP_CODE
 
 
 cd ${COMPONENT}-main
+exit
 PRINT "mongo catalogue"
 mongo < catalogue.js &>>${LOG}
 STAT $?
