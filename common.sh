@@ -131,6 +131,7 @@ yum install python36 gcc python3-devel -y &>>{LOG}
 STAT $?
 
 DOWNLOAD_APP_CODE
+useradd roboshop
 PRINT "movement"
 
 mv ${COMPONENT}-main ${COMPONENT}
