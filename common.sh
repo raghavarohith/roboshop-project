@@ -131,8 +131,10 @@ yum install python36 gcc python3-devel -y &>>{LOG}
 STAT $?
 
 DOWNLOAD_APP_CODE
+PRINT "movement"
 
 mv ${COMPONENT}-main ${COMPONENT}
+STAT $?
 cd ${COMPONENT}
 
 PRINT "pip installation"
