@@ -14,7 +14,6 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 APP_LOC=/tmp
 CONTENT=$COMPONENT-main
 DOWNLOAD_APP_CODE
-
 PRINT "mongo catalogue"
 mongo < catalogue.js &>>${LOG}
 STAT $?
