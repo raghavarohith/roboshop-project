@@ -11,7 +11,7 @@ yum install -y mongodb-org &>>${LOG}
 STAT $?
 
 sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
-APP_LOC=/tmp
+
 DOWNLOAD_APP_CODE
 
 
