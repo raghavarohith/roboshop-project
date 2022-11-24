@@ -156,18 +156,16 @@ SYSTEMD_SETUP
 
 GO_LANG() {
 
-  PRINT "install golang" &>>${LOG}
-  yum install golang -y &>>${LOG}
-  STAT $?
+PRINT "install golang" &>>${LOG}
+yum install golang -y &>>${LOG}
+STAT $?
+DOWNLOAD_APP_CODE
+mv ${COMPONENT}-main ${COMPONENT} &>>${LOG}
+cd ${COMPONENT} &>>${LOG}
 
-  DOWNLOAD_APP_CODE
-
-  mv ${COMPONENT}-main ${COMPONENT} &>>${LOG}
-  cd ${COMPONENT} &>>${LOG}
-  exit
-  go mod init dispatch &>>${LOG}
-  go get &>>${LOG}
-  go build &>>${LOG}
+go mod init dispatch &>>${LOG}
+go get &>>${LOG}
+go build &>>${LOG}
 
 SYSTEMD_SETUP
 }
