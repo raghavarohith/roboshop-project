@@ -138,7 +138,7 @@ cd ${COMPONENT}
 PRINT "pip installation"
 pip3 install -r requirements.txt &>>{LOG}
 STAT $?
-exit
+
 
 USER_ID=$(id -u roboshop)
 GROUP_ID=$(id -g roboshop)
