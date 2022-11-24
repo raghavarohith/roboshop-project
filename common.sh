@@ -119,3 +119,26 @@ STAT $?
 
 SYSTEMD_SETUP
 }
+
+PYTHON() {
+
+PRINT "python installation"
+yum install python36 gcc python3-devel -y &>>{LOG}
+STAT $?
+
+DOWNLOAD_APP_CODE
+
+PRINT "moving payment"
+ mv payment-main payment &>>{LOG}
+STAT $?
+
+PRINT" home payment"
+cd /home/roboshop/payment &>>{LOG}
+STAT $?
+
+PRINT "pip installation"
+ pip3 install -r requirements.txt &>>{LOG}
+STAT $?
+
+SYSTEMD_SETUP
+}

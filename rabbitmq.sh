@@ -5,7 +5,6 @@ RABBIT_APP_USER_PASSWORD=$1
 if [ -z "$1" ]; then
   echo "input password is needed"
   exit
-
   fi
 
 PRINT "download repo file"
