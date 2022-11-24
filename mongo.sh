@@ -10,7 +10,7 @@ PRINT "install mongo db"
 yum install -y mongodb-org &>>${LOG}
 STAT $?
 
-sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.
+sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 
 DOWNLOAD_APP_CODE
 exit
