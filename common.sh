@@ -49,7 +49,7 @@ SYSTEMD_SETUP() {
   STAT $?
 
   PRINT "start"
-  systemctl start ${COMPONENT}
+  systemctl restart ${COMPONENT}
   STAT $?
   PRINT "eanble"
   systemctl enable ${COMPONENT}
