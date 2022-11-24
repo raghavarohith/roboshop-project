@@ -15,7 +15,7 @@ sed -i -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 DOWNLOAD_APP_CODE
 
 
-cd mongodb-main
+cd ${COMPONENT}-main
 PRINT "mongo catalogue"
 mongo < catalogue.js &>>${LOG}
 STAT $?
