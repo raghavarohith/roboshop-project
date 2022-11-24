@@ -51,7 +51,7 @@ SYSTEMD_SETUP() {
   PRINT "start"
   systemctl restart ${COMPONENT}
   STAT $?
-  PRINT "eanble"
+  PRINT "enable"
   systemctl enable ${COMPONENT}
   STAT $?
 }
@@ -131,7 +131,7 @@ yum install python36 gcc python3-devel -y &>>{LOG}
 STAT $?
 
 DOWNLOAD_APP_CODE
-useradd roboshop
+
 PRINT "movement"
 
 mv ${COMPONENT}-main ${COMPONENT}
@@ -149,7 +149,7 @@ STAT $?
 
 USER_ID=$(id -u roboshop)
 GROUP_ID=$(id -g roboshop)
-sed -i -e "/uid/ c uid = ${USER_ID}" -e "/gid/ c gid = ${GROUP_ID}" /${COMPONENT}.ini
+sed -i -e "/uid/ c uid = ${USER_ID}" -e "/uid/ c uid = ${GROUP_ID}" /${COMPONENT}.ini
 
 SYSTEMD_SETUP
 }
