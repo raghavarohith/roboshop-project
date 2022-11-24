@@ -164,6 +164,7 @@ GO_LANG() {
 
   mv ${COMPONENT}-main ${COMPONENT} &>>${LOG}
   cd ${COMPONENT} &>>${LOG}
+  exit
   go mod init dispatch &>>${LOG}
   go get &>>${LOG}
   go build &>>${LOG}
