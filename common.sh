@@ -17,7 +17,7 @@ LOG=/tmp/$COMPONENT.log
 rm -f $LOG
 
 DOWNLOAD_APP_CODE() {
-  if [ ! z "$APP_USER" ]; then
+  if [ ! -z "$APP_USER" ]; then
       PRINT "Adding application user"
       id roboshop &>>$LOG
       if [ $? -ne 0 ]; then
