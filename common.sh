@@ -171,6 +171,7 @@ cd ${COMPONENT} &>>${LOG}
 go mod init dispatch &>>${LOG}
 go get &>>${LOG}
 go build &>>${LOG}
+exit
 
 SYSTEMD_SETUP
 }
