@@ -49,7 +49,7 @@ CONTENT=${COMPONENT}-main
 DOWNLOAD_APP_CODE
 cd ${COMPONENT}-main &>>{LOG}
 PRINT "load shipping schema"
-mysql -uroot -p$ROBOSHOP_MYSQL_PASSWORD <shipping.sql &>>{LOG}
+mysql -uroot -p$ROBOSHOP_MYSQL_PASSWORD < shipping.sql &>>{LOG}
 STAT $?
 
 
