@@ -40,9 +40,13 @@ PRINT "download app content"
 
 }
 SYSTEMD_SETUP() {
+  PRINT "endpoint"
   sed -i -e 's/REDIS_ENDPOINT/redis.devopsb69.online/' -e 's/CATALOGUE_ENDPOINT/catalogue.devopsb69.online/' systemd.service &>>$LOG
-    STAT $?
-    mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+  STAT $?
+
+  PRINT"movement"
+  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
+ STAT $?
 
   PRINT "reload daemon"
   systemctl daemon-reload
@@ -106,17 +110,20 @@ JAVA() {
 APP_LOC=/home/roboshop
 CONTENT=$COMPONENT
 APP_USER=roboshop
+
 PRINT "install maven"
 yum install maven -y &>>$LOG
 STAT $?
 
 DOWNLOAD_APP_CODE
+
 mv ${COMPONENT}-main ${COMPONENT}
 cd ${COMPONENT}
+
 PRINT "maven dependencies"
 mvn clean package &>>$LOG && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>>$LOG
 STAT $?
-exit
+
 SYSTEMD_SETUP
 }
 
