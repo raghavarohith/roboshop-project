@@ -16,7 +16,7 @@ STAT $?
 PRINT "DISABLE MYSQL SERVICE"
 dnf module disable mysql &>>/tmp/log
 STAT $?
-exit
+
  PRINT "INSTALL MYSQL SERVICE"
 yum install mysql-community-server -y &>>/tmp/log
 STAT $?
