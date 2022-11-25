@@ -44,16 +44,13 @@ PRINT "unisntall plugins validatre password"
    echo "uninstall plugin validate_password;" | mysql -uroot -p$ROBOSHOP_MYSQL_PASSWORD &>>{LOG}
 fi
 STAT $?
-
-   APP_LOC=/tmp
-   CONTENT=$COMPONENT-main
-   DOWNLOAD_APP_CODE
-
-   cd $COMPONENT-main &>>{LOG}
-
-   PRINT "load shipping schema"
-    mysql -u root -p$ROBOSHOP_MYSQL_PASSWORD <shipping.sql &>>{LOG}
-    STAT $?
+APP_LOC=/tmp
+CONTENT=${COMPONENT}-main
+DOWNLOAD_APP_CODE
+cd ${COMPONENT}-main &>>{LOG}
+PRINT "load shipping schema"
+mysql -uroot -p$ROBOSHOP_MYSQL_PASSWORD <shipping.sql &>>{LOG}
+STAT $?
 
 
 
