@@ -116,7 +116,7 @@ cd ${COMPONENT}
 PRINT "maven dependencies"
 mvn clean package &>>$LOG && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>>$LOG
 STAT $?
-
+exit
 SYSTEMD_SETUP
 }
 
