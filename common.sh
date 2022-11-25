@@ -116,14 +116,8 @@ yum install maven -y &>>$LOG
 STAT $?
 
 DOWNLOAD_APP_CODE
-PRINT "movement"
-
 mv ${COMPONENT}-main ${COMPONENT}
-STAT $?
-
-PRINT "go to payment"
 cd ${COMPONENT}
-STAT $?
 
 PRINT "maven dependencies"
 mvn clean package &>>$LOG && mv target/${COMPONENT}-1.0.jar ${COMPONENT}.jar &>>$LOG
