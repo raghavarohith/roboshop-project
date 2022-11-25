@@ -46,13 +46,14 @@ fi
 STAT $?
 
 APP_LOC=/tmp
+
 CONTENT=mysql-main
-exit
+
 DOWNLOAD_APP_CODE
 
 cd mysql-main &>>{LOG}
 PRINT "load shipping schema"
-mysql -uroot -p$ROBOSHOP_MYSQL_PASSWORD < shipping.sql &>>{LOG}
+mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} < shipping.sql &>>{LOG}
 STAT $?
 
 
