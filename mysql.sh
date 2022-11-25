@@ -4,20 +4,19 @@ if [ -z "$1" ]; then
   exit 1
   fi
 
-  COMPONENT=mysql
-  source common.sh
+COMPONENT=mysql
+source common.sh
 
 ROBOSHOP_MYSQL_PASSWORD=$1 &>>/tmp/log
-
 
 PRINT "DOWNLOADING MYSQL REPO FILE"
 curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>/tmp/log
 STAT $?
 
- PRINT "DISABLE MYSQL SERVICE"
+PRINT "DISABLE MYSQL SERVICE"
 dnf module disable mysql &>>/tmp/log
 STAT $?
-
+exit
  PRINT "INSTALL MYSQL SERVICE"
 yum install mysql-community-server -y &>>/tmp/log
 STAT $?
