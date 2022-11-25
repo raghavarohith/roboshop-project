@@ -1,6 +1,6 @@
 if [ -z "$1" ]; then
   echo INPUT PASSWORD IS
-  exit $?
+  exit 1
   fi
 
 ROBOSHOP_MYSQL_PASSWORD=$1 &>>/tmp/log
