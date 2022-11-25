@@ -38,8 +38,22 @@ DEFAULT_PASSWORD=$(grep 'temporary password' /var/log/mysqld.log | awk '{print $
 cat /tmp/root-pass-sql | mysql --connect-expired-password -uroot -p${DEFAULT_PASSWORD}
 fi
 
+PRINT "unisntall plugins validatre password"
  echo "show plugins" | mysql -uroot --p$ROBOSHOP_MYSQL_PASSWORD | grep validate_password &>>{LOG}
  if [ $? -eq 0 ]; then
    echo "uninstall plugin validate_password;" | mysql -uroot -p$ROBOSHOP_MYSQL_PASSWORD &>>{LOG}
    fi
    STAT $?
+
+   APP_LOC=/tmp
+   CONTENT=mysql-main
+   DOWNLOAD_APP_CODE
+
+   cd mysql-main &>>{LOG}
+
+   PRINT "load shipping schema"
+    mysql -u root -p$ROBOSHOP_MYSQL_PASSWORD <shipping.sql &>>{LOG}
+    STAT $?
+
+
+
