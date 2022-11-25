@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
   fi
 
 PRINT "download repo file"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>{LOG}
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>{LOG}
 STAT $?
 
 PRINT "erlang installation"
