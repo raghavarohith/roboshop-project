@@ -1,3 +1,6 @@
+COMPONENT=mysql
+source common.sh
+
 if [ -z "$1" ]; then
   echo INPUT PASSWORD IS
   exit 1
