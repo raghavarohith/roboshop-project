@@ -46,7 +46,7 @@ fi
 STAT $?
 
    APP_LOC=/tmp
-   CONTENT=mysql-main
+   CONTENT=$COMPONENT-main
    DOWNLOAD_APP_CODE
 
    cd $COMPONENT-main &>>{LOG}
