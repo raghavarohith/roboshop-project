@@ -42,14 +42,14 @@ PRINT "unisntall plugins validatre password"
  echo "show plugins" | mysql -uroot --p$ROBOSHOP_MYSQL_PASSWORD | grep validate_password &>>{LOG}
  if [ $? -eq 0 ]; then
    echo "uninstall plugin validate_password;" | mysql -uroot -p$ROBOSHOP_MYSQL_PASSWORD &>>{LOG}
-   fi
-   STAT $?
+fi
+STAT $?
 
    APP_LOC=/tmp
    CONTENT=mysql-main
    DOWNLOAD_APP_CODE
 
-   cd mysql-main &>>{LOG}
+   cd $COMPONENT-main &>>{LOG}
 
    PRINT "load shipping schema"
     mysql -u root -p$ROBOSHOP_MYSQL_PASSWORD <shipping.sql &>>{LOG}
