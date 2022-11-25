@@ -47,7 +47,7 @@ STAT $?
 
 APP_LOC=/tmp
 CONTENT=mysql-main
-
+exit
 DOWNLOAD_APP_CODE
 
 cd mysql-main &>>{LOG}
