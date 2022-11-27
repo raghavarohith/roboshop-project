@@ -80,13 +80,6 @@ APP_USER=roboshop
 
  SYSTEMD_SETUP
 
-  PRINT "enable"
-  systemctl enable ${COMPONENT} &>>$LOG
-  STAT $?
-
-  PRINT "restart"
-  systemctl restart ${COMPONENT} &>>$LOG
-  STAT $?
 
 }
 
