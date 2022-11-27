@@ -10,12 +10,13 @@ yum install -y mongodb-org &>>{LOG}
 STAT $?
 
 PRINT "update listen ip"
-sed -i -e 's/127.0.0.1/0.0.0.0' /tmp/mongod.conf &>>{LOG}
+sed -i -e '/127.0.0.1/ c /0.0.0.0' /etc/mongod.conf &>>{LOG}
 STAT $?
 
 PRINT "enable monodb"
- systemctl enable mongod &>>{LOG}
- STAT $?
+systemctl enable mongod &>>{LOG}
+STAT $?
+
 PRINT "start mongodb"
 systemctl restart mongod &>>{LOG}
 STAT $?
