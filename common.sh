@@ -41,7 +41,7 @@ PRINT "download app content"
 }
 SYSTEMD_SETUP() {
   PRINT "endpoint"
-sed -i -e 's/redis.devopsb69.online/dev-redis.mydevops410.online/' -e 's/CATALOGUE_ENDPOINT/dev-catalogue.mydevops410.online/' -e 's/MONGO_ENDPOINT/dev-mongo.mydevops410.online/' systemd.service &>>$LOG
+sed -i -e 's/REDIS_ENDPOINT/dev-redis.mydevops410.online/' -e 's/CATALOGUE_ENDPOINT/dev-catalogue.mydevops410.online/' -e 's/MONGO_ENDPOINT/dev-mongo.mydevops410.online/' systemd.service &>>$LOG
 mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 STAT $?
 
