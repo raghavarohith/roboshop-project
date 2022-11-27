@@ -41,7 +41,7 @@ PRINT "download app content"
 }
 SYSTEMD_SETUP() {
   PRINT "endpoint"
-sed -i -e 's/REDIS_ENDPOINT/dev-redis.mydevops410.online/' -e 's/CATALOGUE_ENDPOINT/dev-catalogue.mydevops410.online/' -e 's/MONGO_ENDPOINT/dev-mongo.mydevops410.online/' -e 's/CARTENDPOINT/dev-cart.mydevops410.online/' -e 's/DBHOST/dev-mysql.mydevops410.online/' -e 's/CARTHOST/dev-cart.mydevops410.online/' -e 's/USERHOST/dev-user.mydevops410.online/' -e 's/AMQPHOST/dev-rabbitmq.mydevops410.online/' -e 's/MONGO_DNSNAME/dev-mongod.mydevops410.online/' systemd.service &>>$LOG
+sed -i -e 's/REDIS_ENDPOINT/dev-redis.mydevops410.online/' -e 's/CATALOGUE_ENDPOINT/dev-catalogue.mydevops410.online/' -e 's/MONGO_ENDPOINT/dev-mongodb.mydevops410.online/' -e 's/CARTENDPOINT/dev-cart.mydevops410.online/' -e 's/DBHOST/dev-mysql.mydevops410.online/' -e 's/CARTHOST/dev-cart.mydevops410.online/' -e 's/USERHOST/dev-user.mydevops410.online/' -e 's/AMQPHOST/dev-rabbitmq.mydevops410.online/' -e 's/MONGO_DNSNAME/dev-mongodb.mydevops410.online/' systemd.service &>>$LOG
 mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
 STAT $?
 
