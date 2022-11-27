@@ -48,6 +48,7 @@ DOWNLOAD_APP_CODE
 
 cd mysql-main &>>$LOG
 
+EXIT
 PRINT "Load Shipping Schema"
 mysql -uroot -p${ROBOSHOP_MYSQL_PASSWORD} <shipping.sql &>>$LOG
 STAT $?
