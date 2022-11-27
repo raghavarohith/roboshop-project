@@ -12,6 +12,10 @@ DOWNLOAD_APP_CODE
 mv frontend-main/static/* . &>>{LOG}
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>{LOG}
 
+PRINT "Update RoboShop Configuration"
+sed -i -e '/catalogue/ s/localhost/dev-catalogue.mydevops410.online	/'
+STAT $?
+
 PRINT "enable nginx"
 systemctl enable nginx &>>{LOG}
 STAT $?
