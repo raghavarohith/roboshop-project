@@ -1,8 +1,7 @@
-
 if [ -z "$1" ]; then
-  echo INPUT PASSWORD IS
-  exit 1
-  fi
+echo INPUT PASSWORD IS
+exit 1
+fi
 
 COMPONENT=mysql
 source common.sh
@@ -16,16 +15,15 @@ PRINT "DISABLE MYSQL SERVICE"
 dnf module disable mysql -y &>>{LOG}
 STAT $?
 
- PRINT "INSTALL MYSQL SERVICE"
+PRINT "INSTALL MYSQL SERVICE"
 yum install mysql-community-server -y &>>{LOG}
 STAT $?
 
- PRINT "MYSQL SERVICE ENABLE"
+PRINT "MYSQL SERVICE ENABLE"
 systemctl enable mysqld &>>{LOG}
 STAT $?
 
-
- PRINT "MYSQL SERVICE START"
+PRINT "MYSQL SERVICE START"
 systemctl start mysqld &>>{LOG}
 STAT $?
 
