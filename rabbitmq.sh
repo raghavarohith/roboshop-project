@@ -23,6 +23,15 @@ PRINT "install rabbitmq"
 yum install rabbitmq-server -y &>>{LOG}
 STAT $?
 
+PRINT "Enable RabbitMQ Service"
+systemctl enable rabbitmq-server   &>>$LOG
+STAT $?
+
+
+PRINT "Start RabbitMQ Service"
+systemctl start rabbitmq-server  &>>$LOG
+STAT $?
+
 PRINT "rabbitmq user"
 rabbitmqctl add_user roboshop ${RABBIT_APP_USER_PASSWORD} &>>{LOG}
 STAT $?
