@@ -139,6 +139,10 @@ SYSTEMD_SETUP
 
 GO_LANG() {
 
+APP_LOC=/home/roboshop
+CONTENT=$COMPONENT
+APP_USER=roboshop
+
 PRINT "install golang"
 yum install golang -y &>>${LOG}
 STAT $?
