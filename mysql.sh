@@ -6,7 +6,6 @@ if [ -z "$1" ]; then
 
 COMPONENT=mysql
 source common.sh
-
 ROBOSHOP_MYSQL_PASSWORD=$1 &>>{LOG}
 
 PRINT "DOWNLOADING MYSQL REPO FILE"
@@ -14,7 +13,7 @@ curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/robo
 STAT $?
 
 PRINT "DISABLE MYSQL SERVICE"
-dnf module disable mysql &>>{LOG}
+dnf module disable mysql -y &>>{LOG}
 STAT $?
 
  PRINT "INSTALL MYSQL SERVICE"
