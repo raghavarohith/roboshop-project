@@ -12,17 +12,15 @@ curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.
 STAT $?
 
 PRINT "erlang installation"
-yum install erlang -y curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>{LOG}
-
+yum install erlang -y &>>{LOG}
 STAT $?
 
 PRINT "rabbitmq repo"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>{LOG}
-
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>{LOG}
 STAT $?
 
 PRINT "install rabbitmq"
-yum install rabbitmq-server -y curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash &>>{LOG}
+yum install rabbitmq-server -y &>>{LOG}
 STAT $?
 
 PRINT "rabbitmq user"
