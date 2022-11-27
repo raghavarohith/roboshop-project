@@ -69,13 +69,6 @@ APP_USER=roboshop
   yum install nodejs -y &>>$LOG
   STAT $?
 
-  PRINT "Adding application user"
-  id roboshop &>>$LOG
-  if [ $? -ne 0 ]; then
-  useradd roboshop &>>$LOG
-  fi
-  STAT $?
-
   DOWNLOAD_APP_CODE
 
   mv ${COMPONENT}-main ${COMPONENT}
@@ -85,13 +78,7 @@ APP_USER=roboshop
   npm install &>>$LOG
   STAT $?
 
-  PRINT "configuration endpoints"
-  sed -i -e 's/REDIS_ENDPOINT/dev-redis.mydevops410.online/' -e 's/MONGO_DNSNAME/dev-mongodb.mydevops410.online/' -e 's/CATALOGUE_ENDPOINT/dev-catalogue.mydevops410.online/' systemd.service &>>$LOG
-  STAT $?
-  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
-  PRINT "system reload"
-  systemctl daemon-reload &>>$LOG
-  STAT $?
+ SYSTEMD_SETUP
 
   PRINT "enable"
   systemctl enable ${COMPONENT} &>>$LOG
