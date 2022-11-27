@@ -13,7 +13,7 @@ mv frontend-main/static/* . &>>{LOG}
 mv frontend-main/localhost.conf /etc/nginx/default.d/roboshop.conf &>>{LOG}
 
 PRINT "Update RoboShop Configuration"
-sed -i -e '/catalogue/ s/localhost/172.31.9.35/' /etc/nginx/default.d/roboshop.conf
+sed -i -e '/catalogue/ s/localhost/dev-catalogue.mydevops410.online/' /etc/nginx/default.d/roboshop.conf
 STAT $?
 
 PRINT "enable nginx"
