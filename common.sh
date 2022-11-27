@@ -86,7 +86,7 @@ APP_USER=roboshop
   STAT $?
 
   PRINT "configuration endpoints"
-  sed -i -e 's/REDIS_ENDPOINT/redis.devopsb69.online/' -e 's/CATALOGUE_ENDPOINT/catalogue.devopsb69.online/' systemd.service &>>$LOG
+  sed -i -e 's/REDIS_ENDPOINT/redis.devopsb69.online/' -e 's/MONGO_DNSNAME/dev-mongodb.mydevops410.online/' -e 's/CATALOGUE_ENDPOINT/catalogue.devopsb69.online/' systemd.service &>>$LOG
   STAT $?
   mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service
   PRINT "system reload"
