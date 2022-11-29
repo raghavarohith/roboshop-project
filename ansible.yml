@@ -4,3 +4,11 @@
     - name: print hello
       ansible.builtin.debug:
        msg: welcome to ansible
+
+
+- name: demo on vars
+  hosts: localhost
+  tasks:
+    - name: print hello
+      ansible.builtin.debug:
+
