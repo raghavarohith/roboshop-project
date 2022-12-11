@@ -37,7 +37,11 @@ if [ -z "${SGID}" ]; then
 fi
 
 
-for component in mongodb ; do
-  COMPONENT="${env}-${component}"
-  create_ec2
-done
+if [ -z "$1" ]; then
+  echo Input Component Name is needed
+  exit 1
+fi
+
+component=$1
+COMPONENT="${env}-${component}"
+create_ec2
